@@ -3,12 +3,12 @@
  */
 package com.cruftbusters
 
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class LibraryTest {
-    @Test fun someLibraryMethodReturnsTrue() {
-        val classUnderTest = Library()
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'")
-    }
-}
+class LibraryTest : FunSpec({
+  test("someLibraryMethodReturnsTrue") {
+    val classUnderTest = Library()
+    classUnderTest.someLibraryMethod() shouldBe true
+  }
+})

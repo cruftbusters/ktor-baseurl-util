@@ -4,7 +4,7 @@
 package com.cruftbusters
 
 class Library {
-    fun someLibraryMethod(): Boolean {
-        return true
-    }
+  fun someLibraryMethod(): Boolean {
+    return true
+  }
 }

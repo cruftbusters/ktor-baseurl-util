@@ -29,9 +29,6 @@ publishing {
   publications {
     create<MavenPublication>(rootProject.name) {
       from(components["java"])
-      groupId = group as String?
-      artifactId = rootProject.name
-      version = project.version as String?
     }
   }
   repositories {

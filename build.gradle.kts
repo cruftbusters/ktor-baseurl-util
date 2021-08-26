@@ -30,6 +30,27 @@ publishing {
   publications {
     create<MavenPublication>(rootProject.name) {
       from(components["java"])
+      pom {
+        name.set(rootProject.name)
+        description.set("Ktor utilities")
+        url.set("https://github.com/cruftbusters/ktor-baseurl-util")
+        licenses {
+          license {
+            name.set("The Apache License, Version 2.0")
+            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+          }
+        }
+        scm {
+          url.set("https://github.com/cruftbusters/ktor-baseurl-util")
+        }
+        developers {
+          developer {
+            id.set("Tyler")
+            name.set("Tyler Johnson")
+            email.set("tyler@cruftbusters.com")
+          }
+        }
+      }
     }
   }
   repositories {

@@ -33,7 +33,9 @@ publishing {
       from(components["java"])
       pom {
         name.set(rootProject.name)
-        description.set("Ktor utilities")
+        withXml {
+          asNode().appendNode("description", "Ktor utilities")
+        }
         url.set("https://github.com/cruftbusters/ktor-baseurl-util")
         licenses {
           license {

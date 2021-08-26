@@ -64,6 +64,13 @@ publishing {
   }
   repositories {
     maven {
+      url = URI("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
+      credentials {
+        username = project.properties["ossrhUsername"] as String?
+        password = project.properties["ossrhPassword"] as String?
+      }
+    }
+    maven {
       url = URI("s3://maven.cruftbusters.com")
       credentials(AwsCredentials::class) {
         File("${System.getProperty("user.home")}/.aws/credentials")

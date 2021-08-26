@@ -28,6 +28,11 @@ version = ProcessBuilder("sh", "-c", "git rev-list --count HEAD")
   .apply { waitFor() }
   .inputStream.bufferedReader().readText().trim()
 
+java {
+  withJavadocJar()
+  withSourcesJar()
+}
+
 publishing {
   publications {
     create<MavenPublication>(rootProject.name) {

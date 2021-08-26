@@ -13,10 +13,11 @@ repositories {
 }
 
 dependencies {
+  implementation("io.ktor:ktor-client-core:+")
   testImplementation("io.kotest:kotest-runner-junit5-jvm:+")
 }
 
-tasks.withType<Test> {
+tasks.test {
   useJUnitPlatform()
 }
 

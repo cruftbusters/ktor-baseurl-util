@@ -4,6 +4,7 @@ plugins {
   kotlin("jvm") version "1.5.21"
   `java-library`
   `maven-publish`
+  id("nebula.maven-resolved-dependencies") version "17.0.0"
 }
 
 group = "com.cruftbusters"

@@ -15,7 +15,9 @@ repositories {
 }
 
 dependencies {
-  implementation("io.ktor:ktor-client-core:+")
+  api("io.ktor:ktor-client-core:+")
+  api("io.ktor:ktor-client-jackson:+")
+  api("io.ktor:ktor-server-tests:+")
   testImplementation("io.kotest:kotest-runner-junit5-jvm:+")
 }
 

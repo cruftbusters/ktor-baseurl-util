@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URI
 
 plugins {
@@ -22,9 +23,8 @@ dependencies {
   testImplementation("io.kotest:kotest-runner-junit5-jvm:+")
 }
 
-tasks.test {
-  useJUnitPlatform()
-}
+tasks.withType<KotlinCompile> { kotlinOptions.jvmTarget = "11" }
+tasks.test { useJUnitPlatform() }
 
 version = ProcessBuilder("sh", "-c", "git rev-list --count HEAD")
   .start()

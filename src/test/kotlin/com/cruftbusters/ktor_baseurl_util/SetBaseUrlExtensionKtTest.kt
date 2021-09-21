@@ -45,7 +45,7 @@ class SetBaseUrlExtensionKtTest : FunSpec({
 
   test("prefix the base path") {
     HttpRequestBuilder().apply {
-      url.encodedPath = "/but/wait/theres/more"
+      url.encodedPath = "but/wait/theres/more"
       setBaseUrl("http://localhost:1/the/base/path")
       url.encodedPath shouldBe "/the/base/path/but/wait/theres/more"
     }

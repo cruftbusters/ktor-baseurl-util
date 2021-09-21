@@ -11,5 +11,5 @@ fun HttpRequestBuilder.setBaseUrl(baseUrl: String) {
   url.protocol = URLProtocol.createOrDefault(protocolString)
   url.host = host
   url.port = portString.toIntOrNull() ?: url.protocol.defaultPort
-  url.encodedPath = if (url.encodedPath.isNotEmpty()) "$basePath${url.encodedPath.trimEnd('/')}" else basePath
+  url.encodedPath = if (url.encodedPath != "/") "$basePath/${url.encodedPath.trimEnd('/')}" else basePath
 }

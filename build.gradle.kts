@@ -73,24 +73,6 @@ publishing {
         password = project.properties["ossrhPassword"] as String?
       }
     }
-    maven {
-      url = URI("s3://maven.cruftbusters.com")
-      credentials(AwsCredentials::class) {
-        File("${System.getProperty("user.home")}/.aws/credentials")
-          .readLines()
-          .filter { it.contains(" = ") }
-          .associate {
-            it.split(" = ").run {
-              assert(size == 2)
-              Pair(get(0), get(1))
-            }
-          }
-          .apply {
-            accessKey = get("aws_access_key_id")
-            secretKey = get("aws_secret_access_key")
-          }
-      }
-    }
   }
 }
 

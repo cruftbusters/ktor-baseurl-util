@@ -10,6 +10,6 @@ fun HttpRequestBuilder.setBaseUrl(baseUrl: String) {
     .slice(listOf(1, 2, 4, 5))
   url.protocol = URLProtocol.createOrDefault(protocolString)
   url.host = host
-  url.port = portString.toIntOrNull() ?: url.port
+  url.port = portString.toIntOrNull() ?: url.protocol.defaultPort
   url.encodedPath = if (url.encodedPath.isNotEmpty()) "$basePath${url.encodedPath.trimEnd('/')}" else basePath
 }

@@ -27,6 +27,15 @@ class SetBaseUrlExtensionKtTest : FunSpec({
     }
   }
 
+  test("default port from protocol") {
+    HttpRequestBuilder().apply {
+      setBaseUrl("http://localhost")
+      url.port shouldBe 80
+      setBaseUrl("https://localhost")
+      url.port shouldBe 443
+    }
+  }
+
   test("set the base path") {
     HttpRequestBuilder().apply {
       setBaseUrl("http://localhost:1/the/base/path")

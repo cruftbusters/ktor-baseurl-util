@@ -23,6 +23,30 @@ dependencies {
   testImplementation("io.kotest:kotest-runner-junit5-jvm:+")
 }
 
+configurations.all {
+  resolutionStrategy {
+    activateDependencyLocking()
+    componentSelection
+      .all(object : Action<ComponentSelection> {
+        @Mutate
+        override fun execute(selection: ComponentSelection) {
+          val version = selection.candidate.version
+          when {
+            version.matches(
+              Regex(
+                ".*[-.]rc\\d*$",
+                RegexOption.IGNORE_CASE
+              )
+            ) -> selection.reject("Release candidates are excluded")
+            version.matches(Regex(".*[-.]M\\d+$")) -> selection.reject("Milestones are excluded")
+            version.matches(Regex(".*-alpha\\d+$")) -> selection.reject("Alphas are excluded")
+            version.matches(Regex(".*-beta\\d+$")) -> selection.reject("Betas are excluded")
+          }
+        }
+      })
+  }
+}
+
 tasks.withType<KotlinCompile> { kotlinOptions.jvmTarget = "11" }
 tasks.test { useJUnitPlatform() }
 
